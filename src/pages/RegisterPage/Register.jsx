@@ -8,7 +8,7 @@ import sweetMessage from "../../Utils/sweetMessage";
 const Register = () => {
     const navigate = useNavigate();
     const { createUser, setUser, updateUserInfo } = useAuth();
-    console.log(createUser)
+    
     const handleSignUp = (e) => {
         e.preventDefault();
         const form = e.target;

@@ -5,10 +5,11 @@ import { Link, useNavigate } from 'react-router';
 import './SignInPage.css'
 import useAuth from '../../Hooks/useAuth';
 import SocialSignInBtn from '../../components/socialSignInButton/socialSignInBtn';
+import sweetMessage from '../../Utils/sweetMessage';
 const SignInPage = () => {
     const navigate = useNavigate();
     const { logInUser, setUser } = useAuth();
-    console.log(logInUser)
+    
     const handleSignIn = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -19,10 +20,16 @@ const SignInPage = () => {
         logInUser(email, password)
         .then(result => {
             const currentUser = result.user;
-            setUser(currentUser)
+            setUser(currentUser);
+            sweetMessage("Logged in successfully.", "success");
+            navigate("/")
         })
         .catch(error => {
-            console.log(error)
+           if(error.message === "Firebase: Error (auth/invalid-credential).") {
+             sweetMessage("Wrong password. try again.", "error")
+           }else {
+            sweetMessage("somethings went wrong. try again.", "error")
+           }
         })
     }
     return (
