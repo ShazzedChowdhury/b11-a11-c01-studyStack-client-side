@@ -1,12 +1,13 @@
 import React from 'react';
 import SignInAnimation from '../../components/SignInAnimation';
 import { BsArrowLeft } from 'react-icons/bs';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import './SignInPage.css'
 import useAuth from '../../Hooks/useAuth';
+import SocialSignInBtn from '../../components/socialSignInButton/socialSignInBtn';
 const SignInPage = () => {
     const navigate = useNavigate();
-    const { logInUser } = useAuth();
+    const { logInUser, setUser } = useAuth();
     console.log(logInUser)
     const handleSignIn = (e) => {
         e.preventDefault();
@@ -15,7 +16,14 @@ const SignInPage = () => {
         const password = form.password.value;
         
         //sign in with firebase
-
+        logInUser(email, password)
+        .then(result => {
+            const currentUser = result.user;
+            setUser(currentUser)
+        })
+        .catch(error => {
+            console.log(error)
+        })
     }
     return (
       <section className="min-h-screen flex justify-center items-center px-5 md:px-0">
@@ -38,12 +46,17 @@ const SignInPage = () => {
                 <div className="card-body">
                   <form className="fieldset" onSubmit={handleSignIn}>
                     <label className="label">Email</label>
-                    <input type="email" name='email' className="input" placeholder="Email" />
+                    <input
+                      type="email"
+                      name="email"
+                      className="input"
+                      placeholder="Email"
+                    />
                     <label className="label">Password</label>
                     <input
                       type="password"
                       className="input"
-                      name='password'
+                      name="password"
                       placeholder="Password"
                     />
                     <div>
@@ -51,6 +64,14 @@ const SignInPage = () => {
                     </div>
                     <button className="btn btn-primary mt-4">Login</button>
                   </form>
+                  <SocialSignInBtn />
+                  <p className="text-sm">
+                    Don't have any account?
+                    <Link className="text-primary" to="/register">
+                      Register
+                    </Link>{" "}
+                    now.
+                  </p>
                 </div>
               </div>
             </div>

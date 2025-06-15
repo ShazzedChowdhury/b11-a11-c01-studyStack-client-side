@@ -7,6 +7,7 @@ import AssignmentPage from '../pages/AssignmentsPage/AssignmentPage';
 import MySubittedAssignmentsPage from '../pages/MySubmittedAssignmentsPage/MySubittedAssignmentsPage';
 import PendingAssignmentsPage from '../pages/PendingAssignmentsPage/PendingAssignmentsPage';
 import SignInPage from '../pages/SignInPage/SignInPage';
+import Register from '../pages/RegisterPage/Register';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
     path: "/sign-in",
     element: <SignInPage />,
   },
+  {
+    path: "/register",
+    element: <Register />
+  }
 ]);
 
 export default router;
