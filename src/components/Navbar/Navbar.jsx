@@ -19,10 +19,10 @@ const Navbar = () => {
           </li>
         )}
         <li>
-          <NavLink to="/sign-in">Sign In</NavLink>
+          <NavLink to="/sign-in block" className="block md:hidden">Sign In</NavLink>
         </li>
         <li>
-          <NavLink to="/register">Register</NavLink>
+          <NavLink to="/register" className="block md:hidden">Register</NavLink>
         </li>
       </>
     );
