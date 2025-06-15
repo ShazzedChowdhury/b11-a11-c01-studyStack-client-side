@@ -33,7 +33,7 @@ const SignInPage = () => {
         })
     }
     return (
-      <section className="min-h-screen flex justify-center items-center px-5 md:px-0">
+      <section className="min-h-screen flex justify-center items-center px-5 md:px-0 py-10">
         <div className="h-fit max-w-3xl md:p-10">
           <div>
             <button

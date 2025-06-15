@@ -2,12 +2,30 @@ import React from 'react';
 import logo from '../../assets/logo.png';
 import { NavLink } from 'react-router';
 import './navbar.css'
+import useAuth from '../../Hooks/useAuth';
+import UserProfile from '../UserProfile/UserProfile';
+import LoggedIn from '../LoggedIn';
+import NotLoggedIn from '../NotLoggedIn';
 const Navbar = () => {
-
-    const links = <>
-        <li><NavLink to="/assignments">Assignments</NavLink></li>
-        <li><NavLink to="/pending-assignments">Pending Assignments</NavLink></li>
-    </>
+    const { user } = useAuth();
+    const links = (
+      <>
+        <li>
+          <NavLink to="/assignments">Assignments</NavLink>
+        </li>
+        {user && (
+          <li>
+            <NavLink to="/pending-assignments">Pending Assignments</NavLink>
+          </li>
+        )}
+        <li>
+          <NavLink to="/sign-in">Sign In</NavLink>
+        </li>
+        <li>
+          <NavLink to="/register">Register</NavLink>
+        </li>
+      </>
+    );
     return (
       <div className="navbar bg-base-100 shadow-sm px-5 py-5 md:px-30">
         <div className="navbar-start">
@@ -41,7 +59,7 @@ const Navbar = () => {
           <a className="flex gap-1 items-center">
             <img src={logo} className="w-10" alt="" />
             <h1 className="text-2xl">
-              study<span className="font-bold">Stack</span>
+              study<span className="font-bold text-primary">Stack</span>
             </h1>
           </a>
         </div>
@@ -50,8 +68,10 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+        <div className="navbar-end gap-5">
+          {
+            user? <LoggedIn /> : <NotLoggedIn />
+          }
         </div>
       </div>
     );
