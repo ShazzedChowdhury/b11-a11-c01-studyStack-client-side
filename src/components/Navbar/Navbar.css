@@ -1,0 +1,8 @@
+ul li a {
+    font-weight: 600;
+}
+
+.active {
+    background-color: #F16623;
+    color: #ffffff;
+}
