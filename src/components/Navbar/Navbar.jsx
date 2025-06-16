@@ -3,7 +3,6 @@ import logo from '../../assets/logo.png';
 import { NavLink } from 'react-router';
 import './navbar.css'
 import useAuth from '../../Hooks/useAuth';
-import UserProfile from '../UserProfile/UserProfile';
 import LoggedIn from '../LoggedIn';
 import NotLoggedIn from '../NotLoggedIn';
 const Navbar = () => {

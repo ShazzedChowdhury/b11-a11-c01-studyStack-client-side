@@ -1,10 +1,26 @@
 import React from 'react';
+import useAuth from '../../Hooks/useAuth';
+import sweetMessage from '../../Utils/sweetMessage';
+import { useNavigate } from 'react-router';
 
 const SocialSignInBtn = () => {
+    const { signInWithGoogle, setUser } = useAuth();
+    const navigate = useNavigate();
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+        .then(result => {
+            const currentUser = result.user;
+            sweetMessage("Logged in successfully.")
+            setUser(currentUser);
+            navigate("/")
+        }).catch(error => {
+            sweetMessage("Somethings went wrong. try again.", "error")
+        })
+    }
     return (
       <div>
         <div className='divider'>OR</div>
-        <button className="btn bg-white text-black border-[#e5e5e5] w-full">
+        <button onClick={handleGoogleSignIn} className="btn bg-white text-black border-[#e5e5e5] w-full">
           <svg
             aria-label="Google logo"
             width="16"

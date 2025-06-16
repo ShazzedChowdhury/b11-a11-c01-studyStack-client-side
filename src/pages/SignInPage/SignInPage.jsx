@@ -7,9 +7,8 @@ import useAuth from '../../Hooks/useAuth';
 import SocialSignInBtn from '../../components/socialSignInButton/socialSignInBtn';
 import sweetMessage from '../../Utils/sweetMessage';
 const SignInPage = () => {
-    const navigate = useNavigate();
     const { logInUser, setUser } = useAuth();
-    
+    const navigate = useNavigate()
     const handleSignIn = (e) => {
         e.preventDefault();
         const form = e.target;

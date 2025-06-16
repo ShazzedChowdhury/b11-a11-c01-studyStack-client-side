@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router';
+import useAuth from '../../Hooks/useAuth';
 
 const UserProfile = ({ onClick, isOpen, handleUserLogOut }) => {
+    const { user } = useAuth();
   return (
     <>
       <div onClick={onClick} className="avatar">
         <div className="ring-primary ring-offset-base-100 w-12 rounded-full ring-2 ring-offset-2">
-          <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
+          <img src={user?.photoURL} />
         </div>
       </div>
 
