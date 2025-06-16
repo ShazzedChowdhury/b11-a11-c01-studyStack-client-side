@@ -10,6 +10,7 @@ import SignInPage from '../pages/SignInPage/SignInPage';
 import Register from '../pages/RegisterPage/Register';
 import axios from 'axios';
 import Loading from '../components/Loading/Loading';
+import DetailsPage from '../pages/DetailsPage/DetailsPage';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "create-assignment",
         element: <CreateAssignmentPage />,
+      },
+      {
+        path: "assignments/:id",
+        element: <DetailsPage />
       },
       {
         path: "assignments",

@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './CreateAssignmentPage.css'
 import useAuth from '../../Hooks/useAuth';
 import axios from 'axios';
 import sweetMessage from '../../Utils/sweetMessage';
+import { AssignmentContext } from '../../context/AssignmentProvider';
 const CreateAssignmentPage = () => {
     const [selectedDate, setSelectedDate] = useState(null);
-    const { user } = useAuth()
+    const { user } = useAuth();
+    const { setStatus } = use(AssignmentContext)
 
     const handleCreateAssignment = (e) => {
         e.preventDefault();
@@ -22,7 +24,8 @@ const CreateAssignmentPage = () => {
           })
           .then((res) => {
             if(res.data.insertedId) {
-                sweetMessage("Assignment created successfully.")
+                sweetMessage("Assignment created successfully.");
+                setStatus(true)
             }
           })
           .catch((error) => {
@@ -85,12 +88,12 @@ const CreateAssignmentPage = () => {
               </div>
             </div>
             <div>
-              <label className="label">Photo URL</label>
+              <label className="label">Thumbnail</label>
               <input
                 type="url"
-                name="photoUrl"
+                name="thumbnail"
                 className="input"
-                placeholder="Photo URL"
+                placeholder="Thumbnail"
               />
             </div>
             <div className="flex flex-col">

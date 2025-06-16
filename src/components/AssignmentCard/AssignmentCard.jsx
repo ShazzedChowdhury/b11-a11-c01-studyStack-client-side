@@ -1,7 +1,10 @@
 import React from 'react';
 import DeleteBtn from '../DeleteBtn/DeleteBtn';
+import UpdateBtn from '../UpdateBtn/UpdateBtn';
+import { useNavigate } from 'react-router';
 
 const AssignmentCard = ({ assignment, setAssignments, allAssignments }) => {
+    const navigate = useNavigate()
   return (
     <div className="card bg-base-100 shadow-sm">
       <figure>
@@ -17,8 +20,8 @@ const AssignmentCard = ({ assignment, setAssignments, allAssignments }) => {
         </p>
         <div className="card-actions justify-center mt-5">
           <DeleteBtn assignment={assignment} />
-          <button className="btn btn-xs">Update</button>
-          <button className="btn btn-xs">View</button>
+          <UpdateBtn assignment={assignment}/>
+          <button onClick={() => navigate(`/assignments/${assignment?._id}`, {state: assignment})} className="btn btn-xs">View</button>
         </div>
       </div>
     </div>

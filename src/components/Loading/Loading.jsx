@@ -5,7 +5,7 @@ import loadingAnimation from "../../assets/animation/loadingAnimation.json"
 const Loading = () => {
     return (
         <div className='py-20 flex justify-center'>
-            <Lottie animationData={loadingAnimation} loop={true} />
+            <Lottie className='w-xs' animationData={loadingAnimation} loop={true} />
         </div>
     );
 };
