@@ -8,6 +8,8 @@ import MySubittedAssignmentsPage from '../pages/MySubmittedAssignmentsPage/MySub
 import PendingAssignmentsPage from '../pages/PendingAssignmentsPage/PendingAssignmentsPage';
 import SignInPage from '../pages/SignInPage/SignInPage';
 import Register from '../pages/RegisterPage/Register';
+import axios from 'axios';
+import Loading from '../components/Loading/Loading';
 
 const router = createBrowserRouter([
   {
@@ -42,8 +44,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/register",
-    element: <Register />
-  }
+    element: <Register />,
+  },
 ]);
 
 export default router;
