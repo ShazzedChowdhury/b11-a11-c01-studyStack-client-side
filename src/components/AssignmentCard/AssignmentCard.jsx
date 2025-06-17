@@ -21,7 +21,7 @@ const AssignmentCard = ({ assignment, setAssignments, allAssignments }) => {
         <div className="card-actions justify-center mt-5">
           <DeleteBtn assignment={assignment} />
           <UpdateBtn assignment={assignment}/>
-          <button onClick={() => navigate(`/assignments/${assignment?._id}`, {state: assignment})} className="btn btn-xs">View</button>
+          <button onClick={() => navigate(`/assignment/${assignment?._id}`)} className="btn btn-xs">View</button>
         </div>
       </div>
     </div>

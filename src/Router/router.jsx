@@ -26,8 +26,10 @@ const router = createBrowserRouter([
         element: <CreateAssignmentPage />,
       },
       {
-        path: "assignments/:id",
-        element: <DetailsPage />
+        path: "assignment/:id",
+        loader: ({params}) =>
+          axios(`${import.meta.env.VITE_base_api}/assignment/${params.id}`),
+        element: <DetailsPage />,
       },
       {
         path: "assignments",
