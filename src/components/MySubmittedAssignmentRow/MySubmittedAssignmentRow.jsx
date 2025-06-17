@@ -7,7 +7,7 @@ const MySubmittedAssignmentRow = ({assignment}) => {
         <td>{assignment?.title}</td>
         <td>{assignment?.status}</td>
         <td>{assignment?.marks}</td>
-        <td>{assignment?.obtainedMarks}</td>
+        <td>{assignment?.obtainMarks}</td>
         <td>{assignment?.feedback}</td>
       </tr>
     );
