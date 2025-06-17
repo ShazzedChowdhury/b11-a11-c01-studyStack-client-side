@@ -17,6 +17,7 @@ const TakeAssignmentBtn = ({ assignment }) => {
     const submittedAssignment = Object.fromEntries(formData.entries());
     submittedAssignment.user = user.email;
     submittedAssignment.assignmentId = assignment?._id;
+    submittedAssignment.status = 'pending'
 
 
       axios.post(

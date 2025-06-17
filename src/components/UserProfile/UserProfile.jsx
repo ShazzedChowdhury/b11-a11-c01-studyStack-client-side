@@ -13,7 +13,7 @@ const UserProfile = ({ onClick, isOpen, handleUserLogOut }) => {
       </div>
 
       {isOpen && (
-        <ul className="p-2 bg-base-100 rounded-sm absolute top-20 right-5 md:right-20 shadow-sm">
+        <ul className="p-2 bg-base-100 rounded-sm absolute top-20 right-5 md:right-20 shadow-sm z-10">
           <li>
             <NavLink to="/create-assignment" className="p-1 rounded-sm text-sm block">
               Create Assignments
