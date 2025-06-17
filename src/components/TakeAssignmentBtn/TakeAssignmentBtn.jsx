@@ -9,8 +9,11 @@ import useAuth from '../../Hooks/useAuth';
 const TakeAssignmentBtn = ({ assignment }) => {
   const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
-
+   
   const handleSubmit = (e) => {
+    if(user.email === assignment.creator) {
+       return alert("not allow")
+    }
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);

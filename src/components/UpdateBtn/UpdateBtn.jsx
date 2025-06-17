@@ -7,6 +7,7 @@ import {
   DialogPanel,
 } from "@headlessui/react";
 import "react-datepicker/dist/react-datepicker.css";
+import sweetMessage from '../../Utils/sweetMessage';
 
 const UpdateBtn = ({assignment}) => {
      const [selectedDate, setSelectedDate] = useState(assignment?.dueDate);
@@ -18,7 +19,14 @@ const UpdateBtn = ({assignment}) => {
         const form = e.target;
         const formData = new FormData(form);
         const updatedData = Object.fromEntries(formData.entries());
-        console.log(updatedData)
+        
+        axios.put(`${import.meta.env.VITE_base_api}/assignment-update/${assignment._id}`, updatedData)
+        .then(res => {
+          if(res.data.modifiedCount) {
+            sweetMessage("Updated successfully.");
+          }
+        })
+        .catch(error => console.log(error))
     }
     return (
       <>

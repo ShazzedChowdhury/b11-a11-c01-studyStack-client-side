@@ -11,6 +11,7 @@ import Register from '../pages/RegisterPage/Register';
 import axios from 'axios';
 import Loading from '../components/Loading/Loading';
 import DetailsPage from '../pages/DetailsPage/DetailsPage';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -23,13 +24,21 @@ const router = createBrowserRouter([
       },
       {
         path: "create-assignment",
-        element: <CreateAssignmentPage />,
+        element: (
+          <PrivateRoute>
+            <CreateAssignmentPage />
+          </PrivateRoute>
+        ),
       },
       {
         path: "assignment/:id",
-        loader: ({params}) =>
+        loader: ({ params }) =>
           axios(`${import.meta.env.VITE_base_api}/assignment/${params.id}`),
-        element: <DetailsPage />,
+        element: (
+          <PrivateRoute>
+            <DetailsPage />
+          </PrivateRoute>
+        ),
       },
       {
         path: "assignments",
@@ -37,11 +46,19 @@ const router = createBrowserRouter([
       },
       {
         path: "my-assignments",
-        element: <MySubittedAssignmentsPage />,
+        element: (
+          <PrivateRoute>
+            <MySubittedAssignmentsPage />
+          </PrivateRoute>
+        ),
       },
       {
         path: "pending-assignments",
-        element: <PendingAssignmentsPage />,
+        element: (
+          <PrivateRoute>
+            <PendingAssignmentsPage />
+          </PrivateRoute>
+        ),
       },
     ],
   },
