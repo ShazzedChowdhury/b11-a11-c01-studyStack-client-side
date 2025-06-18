@@ -5,6 +5,7 @@ import './navbar.css'
 import useAuth from '../../Hooks/useAuth';
 import LoggedIn from '../LoggedIn';
 import NotLoggedIn from '../NotLoggedIn';
+import ThemeControler from '../ThemeControler';
 const Navbar = () => {
     const { user } = useAuth();
     const links = (
@@ -64,6 +65,9 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end gap-5">
+          <div>
+            <ThemeControler />
+          </div>
           {user ? <LoggedIn /> : <NotLoggedIn />}
         </div>
       </div>
