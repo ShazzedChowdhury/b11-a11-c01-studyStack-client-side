@@ -11,8 +11,12 @@ import sweetMessage from '../../Utils/sweetMessage';
 
 const UpdateBtn = ({assignment}) => {
      const [selectedDate, setSelectedDate] = useState(assignment?.dueDate);
+     const parseDate = (dateStr) => {
+       const [day, month, year] = dateStr.split("-");
+       return new Date(`${year}-${month}-${day}`); // "2000-05-05"
+     };
      const [isOpen, setIsOpen] = useState(false);
-    console.log(assignment)
+    console.log(selectedDate)
 
     const handleUpdate = (e) => {
         e.preventDefault()
@@ -77,7 +81,7 @@ const UpdateBtn = ({assignment}) => {
                   <DatePicker
                     className="input"
                     name="dueDate"
-                    selected={selectedDate}
+                    selected={parseDate(selectedDate)}
                     onChange={(date) => setSelectedDate(date)}
                     dateFormat={"dd-MM-yyyy"}
                   />

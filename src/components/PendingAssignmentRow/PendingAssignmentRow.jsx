@@ -7,29 +7,34 @@ import axios from "axios";
 import sweetMessage from "../../Utils/sweetMessage";
 import useAuth from "../../Hooks/useAuth";
 
-const PendingAssignmentRow = ({ assignment }) => {
+const PendingAssignmentRow = ({ assignment, reFetch, setReFetch }) => {
   const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
-  console.log(assignment)
+  console.log(assignment);
   const handleGivingMarks = (e) => {
-        e.preventDefault();
-        if(assignment.user === user.email) {
-          setIsOpen(false)
-          return sweetMessage("You are not able to give marks.", "error")
-        }
-        const form = e.target;
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-         data.status = "completed"
+    e.preventDefault();
+    if (assignment.user === user.email) {
+      setIsOpen(false);
+      return sweetMessage("You are not able to give marks.", "error");
+    }
+    const form = e.target;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    data.status = "completed";
 
-        axios.patch(`${import.meta.env.VITE_base_api}/pending-assignment/${assignment._id}`, data)
-        .then(res => {
-          if(res.data) {
-            setIsOpen(false)
-          }
-        })
-        .catch(error => console.log(error))
-  }
+    axios
+      .patch(
+        `${import.meta.env.VITE_base_api}/pending-assignment/${assignment._id}`,
+        data
+      )
+      .then((res) => {
+        if (res.data) {
+          setIsOpen(false);
+          setReFetch(!reFetch)
+        }
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <>
       <tr>
@@ -77,7 +82,9 @@ const PendingAssignmentRow = ({ assignment }) => {
                 name="feedback"
                 required
               ></textarea>
-              <button type="submit" className="btn btn-primary w-full">Submit</button>
+              <button type="submit" className="btn btn-primary w-full">
+                Submit
+              </button>
             </form>
           </DialogPanel>
         </div>

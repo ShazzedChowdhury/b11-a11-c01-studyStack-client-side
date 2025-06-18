@@ -4,14 +4,18 @@ import Loading from '../../components/Loading/Loading';
 import usePendingAssignmentApi from '../../components/APIs/usePendingAssignmentApi';
 
 const PendingAssignmentsPage = () => {
-    const { PendingAssignmentPromise } = usePendingAssignmentApi()
+    const { pendingData, reFetch, setReFetch, loading } =
+      usePendingAssignmentApi("pending");
+      console.log(pendingData)
+
+      if(loading) {
+        return <Loading />
+      }
     return (
       <section className="max-w-7xl mx-auto px-5 md:px-10 py-10">
         <Suspense fallback={<Loading />}>
           <div className="overflow-x-auto">
-            <PendingAssignmentTable
-              PendingAssignmentPromise={PendingAssignmentPromise("pending")}
-            />
+            <PendingAssignmentTable pendingData={pendingData}  reFetch={reFetch} setReFetch={setReFetch} loading={loading} />
           </div>
         </Suspense>
       </section>

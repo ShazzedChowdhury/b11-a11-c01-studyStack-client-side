@@ -1,0 +1,31 @@
+{
+  "section": {
+    "title": "Frequently Asked Questions",
+    "questions": [
+      {
+        "question": "What is this platform used for?",
+        "answer": "This platform is designed to manage group assignments online. Users can create assignments, collaborate in groups, submit work, and review each other's submissions."
+      },
+      {
+        "question": "Who can create assignments?",
+        "answer": "Assignments can be created by registered users with creator or instructor roles. They can set deadlines, add resources, and assign groups."
+      },
+      {
+        "question": "Can students submit assignments individually?",
+        "answer": "Yes. Students can either submit individually or as part of a group, depending on the assignment settings configured by the creator."
+      },
+      {
+        "question": "How does peer review work?",
+        "answer": "Peer review allows students to evaluate each other's assignments. Reviewers can leave comments, give scores, and provide feedback as part of the learning process."
+      },
+      {
+        "question": "Is my data and submission secure?",
+        "answer": "Absolutely. All submissions are stored securely, and user data is protected using industry-standard security measures."
+      },
+      {
+        "question": "Can I edit an assignment after submitting?",
+        "answer": "You can edit or resubmit your work before the deadline. After the deadline, submissions are locked unless allowed by the assignment creator."
+      }
+    ]
+  }
+}
