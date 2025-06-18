@@ -6,11 +6,11 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const DetailsPage = () => {
     const [assignment, setAssignment] = useState([]);
-    const {params} = useParams();
+    const {id} = useParams();
     const axiosSecure = useAxiosSecure()
 
     useEffect(() => {
-      axiosSecure(`/assignment/${params.id}`).then((res) =>
+      axiosSecure(`/assignment/${id}`).then((res) =>
         setAssignment(res.data)
       )
     }, [axiosSecure])

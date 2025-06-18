@@ -4,19 +4,30 @@ import {
   DialogPanel, 
 } from "@headlessui/react";
 import axios from "axios";
+import sweetMessage from "../../Utils/sweetMessage";
+import useAuth from "../../Hooks/useAuth";
 
 const PendingAssignmentRow = ({ assignment }) => {
+  const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
-
+  console.log(assignment)
   const handleGivingMarks = (e) => {
         e.preventDefault();
+        if(assignment.user === user.email) {
+          setIsOpen(false)
+          return sweetMessage("You are not able to give marks.", "error")
+        }
         const form = e.target;
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
          data.status = "completed"
 
         axios.patch(`${import.meta.env.VITE_base_api}/pending-assignment/${assignment._id}`, data)
-        .then(res => res.data)
+        .then(res => {
+          if(res.data) {
+            setIsOpen(false)
+          }
+        })
         .catch(error => console.log(error))
   }
   return (
@@ -39,7 +50,7 @@ const PendingAssignmentRow = ({ assignment }) => {
         className="relative z-50"
       >
         <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-          <DialogPanel className="max-w-lg space-y-4  bg-white p-12 shadow-xl rounded-md">
+          <DialogPanel className="max-w-lg space-y-4  bg-base-100 p-12 shadow-xl rounded-md">
             <div className="flex gap-4 justify-end">
               <button onClick={() => setIsOpen(false)}>Cancel</button>
             </div>
@@ -66,7 +77,7 @@ const PendingAssignmentRow = ({ assignment }) => {
                 name="feedback"
                 required
               ></textarea>
-              <button className="btn btn-primary w-full">Submit</button>
+              <button type="submit" className="btn btn-primary w-full">Submit</button>
             </form>
           </DialogPanel>
         </div>
