@@ -1,0 +1,26 @@
+{
+  "section": {
+    "title": "Powerful Features for Smarter Group Work",
+    "subtitle": "Collaborate effortlessly with your team. Create, manage, and evaluate assignments—anytime, anywhere.",
+    "features": [
+      {
+        "icon": "📝",
+        "title": "Create Assignments",
+        "description": "Set up group tasks, add resources, and assign deadlines with ease.",
+        "color": "text-indigo-600"
+      },
+      {
+        "icon": "✅",
+        "title": "Submit Work",
+        "description": "Students can submit files, write responses, and track their submissions in real-time.",
+        "color": "text-green-500"
+      },
+      {
+        "icon": "📊",
+        "title": "Peer & Instructor Review",
+        "description": "Allow team members or instructors to review, comment, and grade assignments collaboratively.",
+        "color": "text-yellow-500"
+      }
+    ]
+  }
+}

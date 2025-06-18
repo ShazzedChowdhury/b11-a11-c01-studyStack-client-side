@@ -27,11 +27,11 @@ const ThemeControler = () => {
         />
 
         {theme === "light" ? (
-          <div className='rounded-full btn btn-soft btn-primary'>
+          <div className='rounded-full btn btn-primary h-fit p-1'>
             <FaMoon size={25} />
           </div>
         ) : (
-        <div className='rounded-full btn btn-soft btn-primary'>
+        <div className='rounded-full btn btn-primary h-fit p-1'>
           <LuSun size={25} />
         </div>
         )}
