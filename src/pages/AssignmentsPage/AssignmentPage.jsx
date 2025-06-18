@@ -1,5 +1,4 @@
 import React, { use, useState } from 'react';
-import { useLoaderData } from 'react-router';
 import AssignmentCard from '../../components/AssignmentCard/AssignmentCard';
 import { AssignmentContext } from '../../context/AssignmentProvider';
 import Loading from '../../components/Loading/Loading';

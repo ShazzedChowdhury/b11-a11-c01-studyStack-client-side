@@ -1,11 +1,19 @@
-import React from 'react';
-import { useLoaderData } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { useLoaderData, useParams } from 'react-router';
 import "react-datepicker/dist/react-datepicker.css";
 import TakeAssignmentBtn from '../../components/TakeAssignmentBtn/TakeAssignmentBtn';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const DetailsPage = () => {
-    const initialData = useLoaderData();
-    const assignment = initialData.data;
+    const [assignment, setAssignment] = useState([]);
+    const {params} = useParams();
+    const axiosSecure = useAxiosSecure()
+
+    useEffect(() => {
+      axiosSecure(`/assignment/${params.id}`).then((res) =>
+        setAssignment(res.data)
+      )
+    }, [axiosSecure])
     return (
       <section className="max-w-7xl mx-auto px-5 md:px-10 py-10">
         <div className="hero bg-base-200 rounded-lg">
