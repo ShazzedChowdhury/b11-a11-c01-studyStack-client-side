@@ -11,6 +11,11 @@ const Navbar = () => {
     const links = (
       <>
         <li>
+          <NavLink to="/" >
+            Home
+          </NavLink>
+        </li>
+        <li>
           <NavLink to="/assignments">Assignments</NavLink>
         </li>
         {user && (
@@ -19,10 +24,14 @@ const Navbar = () => {
           </li>
         )}
         <li>
-          <NavLink to="/sign-in block" className="block md:hidden">Sign In</NavLink>
+          <NavLink to="/sign-in block" className="block md:hidden">
+            Sign In
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/register" className="block md:hidden">Register</NavLink>
+          <NavLink to="/register" className="block md:hidden">
+            Register
+          </NavLink>
         </li>
       </>
     );
