@@ -6,13 +6,13 @@ import sweetMessage from '../Utils/sweetMessage';
 import { useNavigate } from 'react-router';
 
 
-const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_base_api,
-});
 const useAxiosSecure = () => {
+    const axiosInstance = axios.create({
+      baseURL: import.meta.env.VITE_base_api,
+    });
     const { user, setUser } = useAuth();
     const {logOutUser} = use(AuthContext)
-    const navigate = useNavigate()
+    
     axiosInstance.interceptors.request.use((config) => {
         config.headers.Authorization = `Bearer ${user.accessToken}`
         return config

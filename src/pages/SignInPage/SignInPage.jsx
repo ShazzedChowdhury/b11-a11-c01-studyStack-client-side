@@ -1,7 +1,7 @@
 import React from 'react';
 import SignInAnimation from '../../components/SignInAnimation';
 import { BsArrowLeft } from 'react-icons/bs';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import './SignInPage.css'
 import useAuth from '../../Hooks/useAuth';
 import SocialSignInBtn from '../../components/socialSignInButton/socialSignInBtn';
@@ -9,6 +9,8 @@ import sweetMessage from '../../Utils/sweetMessage';
 const SignInPage = () => {
     const { logInUser, setUser } = useAuth();
     const navigate = useNavigate()
+    const location = useLocation()
+    console.log(location)
     const handleSignIn = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -21,7 +23,7 @@ const SignInPage = () => {
             const currentUser = result.user;
             setUser(currentUser);
             sweetMessage("Logged in successfully.", "success");
-            navigate("/")
+            navigate( location?.state || "/")
         })
         .catch(error => {
            if(error.message === "Firebase: Error (auth/invalid-credential).") {
@@ -70,7 +72,7 @@ const SignInPage = () => {
                     </div>
                     <button className="btn btn-primary mt-4">Login</button>
                   </form>
-                  <SocialSignInBtn />
+                  <SocialSignInBtn location={location} />
                   <p className="text-sm">
                     Don't have any account?
                     <Link className="text-primary" to="/register">

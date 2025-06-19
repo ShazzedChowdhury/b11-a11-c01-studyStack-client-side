@@ -2,11 +2,16 @@ import React from 'react';
 import DeleteBtn from '../DeleteBtn/DeleteBtn';
 import UpdateBtn from '../UpdateBtn/UpdateBtn';
 import { useNavigate } from 'react-router';
+import {motion} from "motion/react";
 
-const AssignmentCard = ({ assignment, setAssignments, allAssignments }) => {
+const AssignmentCard = ({ assignment, index }) => {
     const navigate = useNavigate()
   return (
-    <div className="card bg-base-100 shadow-sm">
+    <motion.div
+     initial={{opacity: 0, y:10}}
+     animate={{opacity: 1, y:0}}
+     transition={{duration: 2, delay: index}}
+     className="card bg-base-100 shadow-sm">
       <figure>
         <img src={assignment?.thumbnail} />
       </figure>
@@ -24,7 +29,7 @@ const AssignmentCard = ({ assignment, setAssignments, allAssignments }) => {
           <button onClick={() => navigate(`/assignment/${assignment?._id}`)} className="btn btn-xs">View</button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

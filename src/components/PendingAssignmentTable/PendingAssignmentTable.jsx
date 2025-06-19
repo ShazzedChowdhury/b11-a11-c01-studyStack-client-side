@@ -22,8 +22,8 @@ const PendingAssignmentTable = ({
         </tr>
       </thead>
       <tbody>
-        {pendingData.map((assignment) => {
-          return <PendingAssignmentRow assignment={assignment}  reFetch={reFetch}
+        {pendingData.map((assignment, index) => {
+          return <PendingAssignmentRow assignment={assignment} index={index} reFetch={reFetch}
           setReFetch={setReFetch} />;
         })}
       </tbody>

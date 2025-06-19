@@ -32,11 +32,11 @@ const UpdateBtn = ({assignment}) => {
       }
      
      useEffect(() => {
-       if(assignment?.dueDate){
-       const date = parseDate(assignment?.dueDate);
-        setSelectedDate(date)
+       if (assignment?.dueDate) {
+         const date = parseDate(assignment?.dueDate);
+         setSelectedDate(date);
        }
-     }, [assignment])
+     }, [assignment]);
     
 
     const handleUpdate = (e) => {

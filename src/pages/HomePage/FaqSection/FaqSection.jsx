@@ -1,5 +1,6 @@
 import React, { use, useEffect, useState } from 'react';
 import Loading from '../../../components/Loading/Loading';
+import {motion} from "motion/react";
 
 const FaqSection = () => {
   const [ faq, setFaq ] = useState(null);
@@ -19,13 +20,21 @@ const FaqSection = () => {
 
   if(!faq){ return <Loading />}
   return (
-    <section className="max-w-7xl mx-auto px-5 md:px-10 py-10">
+    <motion.section
+        initial={{ opacity: 0, y:-50}}
+        whileInView={{ opacity:1, y:0}}
+        transition={{ duration: 1, delay:0.5 }}
+     className="max-w-7xl mx-auto px-5 md:px-10 py-10">
       <h1 className="text-3xl font-bold text-center pb-10">{faq.title}</h1>
 
       <div>
         {faq?.questions.map((question, index) => {
           return (
-            <div
+            <motion.div
+                initial={{opacity:0, x:-100}}
+                animate={{opacity:1, x:0}}
+                transition={{duration: 2, delay:index+1}}
+                viewport={{once:true}}
               onClick={() => toggle(index)}
               className="shadow-sm mb-4 p-5 rounded-lg bg-base-100"
             >
@@ -34,11 +43,11 @@ const FaqSection = () => {
                 <span>{openIndex === index ? "-" : "+"}</span>
               </div>
               {openIndex === index && <p className='text-sm font-semibold'>{question?.answer}</p>}
-            </div>
+            </motion.div>
           );
         })}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

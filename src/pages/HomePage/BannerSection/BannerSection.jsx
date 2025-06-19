@@ -1,11 +1,12 @@
 import React from 'react';
 import { BiSolidBadgeCheck } from "react-icons/bi";
+import BannerAnimation from '../../../components/BannerAnimation/BannerAnimation';
 
 
 const BannerSection = () => {
     return (
       <section className=" bg-gradient-to-br from-[#ffffff] to-[#f0f4ff] dark:from-[#1d232a] dark:to-[##1a1f26]">
-        <div className="flex flex-col-reverse md:flex-row py-10 gap-10 items-center justify-between max-w-7xl mx-auto px-5 md:px-10">
+        <div className="flex flex-col-reverse md:flex-row py-10 gap-10 items-center justify-between max-w-7xl mx-auto px-5 md:px-10 h-[calc(100vh-89px)]">
           <div className="space-y-5">
             <h1 className="text-3xl md:text-5xl font-bold">
               Limitless learning at <br /> your fingertips
@@ -30,12 +31,17 @@ const BannerSection = () => {
             </div>
             <button className="btn btn-outline btn-primary">Get Started</button>
           </div>
-          <div>
-            <img
-              src="https://themes.stackbros.in/eduport_r/assets/07-CK3ZrEuH.png"
-              className="max-w-sm w-full"
-              alt="banner image"
-            />
+          <div className="relative">
+            <div className="max-w-sm w-full relative z-1  overflow-hidden">
+              <img
+                src="https://themes.stackbros.in/eduport_r/assets/07-CK3ZrEuH.png"
+                alt="banner image"
+                className='object-cover object-top w-full'
+              />
+            </div>
+            <div className="absolute top-20 right-3 md:right-10 w-full">
+              <BannerAnimation />
+            </div>
           </div>
         </div>
       </section>

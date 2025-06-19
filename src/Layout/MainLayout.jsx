@@ -12,7 +12,7 @@ const MainLayout = () => {
         <main>
           <Outlet />
         </main>
-        <footer className=" bg-base-100">
+        <footer className="bg-[#111827]">
           <Footer />
         </footer>
       </>

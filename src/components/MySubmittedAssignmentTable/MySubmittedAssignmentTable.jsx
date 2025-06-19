@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import MySubmittedAssignmentRow from '../MySubmittedAssignmentRow/MySubmittedAssignmentRow';
 import NoContentSection from '../NoContentSection';
 
+
 const MySubmittedAssignmentTable = ({ mySubmittedAssignmentPromise }) => {
     const myAssignments = use(mySubmittedAssignmentPromise);
     
@@ -22,8 +23,8 @@ const MySubmittedAssignmentTable = ({ mySubmittedAssignmentPromise }) => {
         </tr>
       </thead>
       <tbody>
-        {myAssignments.map((assignment) => (
-          <MySubmittedAssignmentRow key={assignment?._id} assignment={assignment} />
+        {myAssignments.map((assignment, index) => (
+          <MySubmittedAssignmentRow key={assignment?._id} index={index} assignment={assignment} />
         ))}
       </tbody>
     </table>

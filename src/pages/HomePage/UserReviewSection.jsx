@@ -1,11 +1,16 @@
 import React from "react";
-
+import {motion} from "motion/react"
 const UserReviewSection = () => {
   return (
     <section className="bg-[#f5f7f9] dark:bg-[#000000]">
       <div className="flex flex-col-reverse md:flex-row justify-between w-full items-center gap-5 max-w-7xl mx-auto px-5 md:px-10 py-20">
         <div className="grid grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-5 *:rounded-lg">
-          <div className="bg-base-100 shadow-lg md:col-span-2 flex flex-col items-center gap-5 p-5  text-center">
+          <motion.div
+            initial={{ opacity: 0, x: -150 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 2 }}
+            className="bg-base-100 shadow-lg md:col-span-2 flex flex-col items-center gap-5 p-5  text-center"
+          >
             <div className="w-20 rounded-full flex justify-center items-center overflow-hidden">
               <img
                 src="https://themes.stackbros.in/eduport_r/assets/01-7N0KytgQ.jpg"
@@ -19,8 +24,13 @@ const UserReviewSection = () => {
               laughing
             </p>
             <p className="text-sm font-bold">Carolyn Ortiz</p>
-          </div>
-          <div className="bg-base-100 p-5 shadow-lg">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: -100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 2 }}
+            className="bg-base-100 p-5 shadow-lg"
+          >
             <h1 className="text-lg font-bold mb-5">100+ verified users</h1>
             <div className="*:flex *:gap-2 *:mb-5">
               <div className="flex items-center">
@@ -57,8 +67,13 @@ const UserReviewSection = () => {
                 <h3 className="text-lg font-semibold">Lori Stevens</h3>
               </div>
             </div>
-          </div>
-          <div className="col-span-2 hidden md:flex justify-end ">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 200 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 2 }}
+            className="col-span-2 hidden md:flex justify-end "
+          >
             <div
               className="bg-primary w-[300px] rounded-lg"
               style={{
@@ -69,8 +84,12 @@ const UserReviewSection = () => {
                 height: "150px",
               }}
             ></div>
-          </div>
-          <div className="bg-base-100 shadow-lg md:row-span-2 flex flex-col items-center justify-center p-5 text-center text-gray-400 text-sm">
+          </motion.div>
+          <motion.div
+           initial={{opacity: 0, y:100}}
+           whileInView={{opacity:1, y:0}}
+           transition={{duration:2, delay:1}}
+           className="bg-base-100 shadow-lg md:row-span-2 flex flex-col items-center justify-center p-5 text-center text-gray-400 text-sm">
             <div className="w-[80px] overflow-hidden rounded-full mb-5">
               <img
                 src="https://themes.stackbros.in/eduport_r/assets/03-gME39Lw5.jpg"
@@ -85,7 +104,7 @@ const UserReviewSection = () => {
                 agreeable depending.
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <div className="space-y-5">

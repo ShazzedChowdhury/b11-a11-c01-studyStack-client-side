@@ -6,9 +6,11 @@ import useAuth from '../../Hooks/useAuth';
 import axios from 'axios';
 import sweetMessage from '../../Utils/sweetMessage';
 import { AssignmentContext } from '../../context/AssignmentProvider';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 const CreateAssignmentPage = () => {
     const [selectedDate, setSelectedDate] = useState(null);
     const { user } = useAuth();
+    const axiosSecure = useAxiosSecure()
     const { setStatus } = use(AssignmentContext)
 
     const handleCreateAssignment = (e) => {
@@ -19,7 +21,7 @@ const CreateAssignmentPage = () => {
         assignmentData.creator = user.email;
         console.log(assignmentData);
 
-        axios.post(`${import.meta.env.VITE_base_api}/create-assignment`, {
+        axiosSecure.post(`/create-assignment`, {
             ...assignmentData
           })
           .then((res) => {

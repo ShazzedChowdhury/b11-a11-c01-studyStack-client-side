@@ -6,8 +6,9 @@ import {
 import axios from "axios";
 import sweetMessage from "../../Utils/sweetMessage";
 import useAuth from "../../Hooks/useAuth";
+import {motion} from "motion/react";
 
-const PendingAssignmentRow = ({ assignment, reFetch, setReFetch }) => {
+const PendingAssignmentRow = ({ assignment, reFetch, setReFetch, index }) => {
   const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   console.log(assignment);
@@ -37,7 +38,11 @@ const PendingAssignmentRow = ({ assignment, reFetch, setReFetch }) => {
   };
   return (
     <>
-      <tr>
+      <motion.tr
+        initial={{opacity:0, x:-100}}
+        animate={{opacity:1, x:0}}
+        transition={{duration:2, delay:index<6 ? index : 6}}
+      >
         <th>#</th>
         <td>{assignment?.title}</td>
         <td>{assignment?.user}</td>
@@ -47,7 +52,7 @@ const PendingAssignmentRow = ({ assignment, reFetch, setReFetch }) => {
             Give marks
           </button>
         </td>
-      </tr>
+      </motion.tr>
 
       <Dialog
         open={isOpen}
