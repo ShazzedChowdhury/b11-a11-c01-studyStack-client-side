@@ -5,17 +5,17 @@ import Footer from '../components/Footer/Footer';
 
 const MainLayout = () => {
     return (
-        <>
-            <header>
-                <Navbar />
-            </header>
-            <main>
-                <Outlet />
-            </main>
-            <footer>
-                <Footer />
-            </footer>
-        </>
+      <>
+        <header>
+          <Navbar />
+        </header>
+        <main>
+          <Outlet />
+        </main>
+        <footer className=" bg-base-100">
+          <Footer />
+        </footer>
+      </>
     );
 };
 

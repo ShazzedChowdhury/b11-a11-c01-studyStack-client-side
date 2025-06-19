@@ -1,9 +1,13 @@
 import React, { use } from 'react';
 import MySubmittedAssignmentRow from '../MySubmittedAssignmentRow/MySubmittedAssignmentRow';
+import NoContentSection from '../NoContentSection';
 
 const MySubmittedAssignmentTable = ({ mySubmittedAssignmentPromise }) => {
     const myAssignments = use(mySubmittedAssignmentPromise);
-    console.log(myAssignments)
+    
+    if(myAssignments.length === 0){
+      return <NoContentSection content={"You not added any assignment yet."} btnContent={"Create Assignment"} path={'/create-assignment'} />
+    }
   return (
     <table className="table">
       {/* head */}

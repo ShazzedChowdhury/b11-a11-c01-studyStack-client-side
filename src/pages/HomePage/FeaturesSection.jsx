@@ -14,7 +14,7 @@ const FeaturesSection = () => {
     if (!featuresData) return <Loading />;
 
     return (
-      <section className="bg-base-100 py-20 px-5 md:px-10 max-w-7xl mx-auto">
+      <section className="bg-base-100 dark:bg-[#000000] py-20 px-5 md:px-10 max-w-7xl mx-auto">
         <h1 className='text-3xl font-bold text-center pb-5'>{featuresData.title}</h1>
         <p className='text-lg font-semibold text-center pb-10'>{featuresData.subtitle}</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
 import DatePicker from 'react-datepicker';
 import {
@@ -13,8 +13,13 @@ const UpdateBtn = ({assignment}) => {
      const [selectedDate, setSelectedDate] = useState(assignment?.dueDate);
      const parseDate = (dateStr) => {
        const [day, month, year] = dateStr.split("-");
-       return new Date(`${year}-${month}-${day}`); // "2000-05-05"
+       const formatedDate =  new Date(`${day}-${month}-${year}`); 
+       setSelectedDate(formatedDate)
      };
+     console.log(selectedDate)
+     useEffect(() => {
+        parseDate(selectedDate)
+     }, [])
      const [isOpen, setIsOpen] = useState(false);
     console.log(selectedDate)
 
@@ -43,7 +48,7 @@ const UpdateBtn = ({assignment}) => {
           className="relative z-50"
         >
           <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-            <DialogPanel className="max-w-2xl w-full shrink-0 space-y-4  bg-white p-12 shadow-md rounded-sm">
+            <DialogPanel className="max-w-2xl w-full shrink-0 space-y-4  bg-base-100 p-12 shadow-md rounded-sm">
               <div className="flex gap-4 justify-end">
                 <button onClick={() => setIsOpen(false)}>Cancel</button>
               </div>
@@ -76,6 +81,9 @@ const UpdateBtn = ({assignment}) => {
                     <option value="hard">Hard</option>
                   </select>
                 </div>
+                {
+                  assignment?.dueDate
+                }
                 <div className="flex flex-col">
                   <label className="label">Date</label>
                   <DatePicker
@@ -83,7 +91,7 @@ const UpdateBtn = ({assignment}) => {
                     name="dueDate"
                     selected={parseDate(selectedDate)}
                     onChange={(date) => setSelectedDate(date)}
-                    dateFormat={"dd-MM-yyyy"}
+                    // dateFormat={"dd-MM-yyyy"}
                   />
                 </div>
                 <div>
