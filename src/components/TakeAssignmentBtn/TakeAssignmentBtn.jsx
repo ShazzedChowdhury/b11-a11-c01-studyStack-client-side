@@ -48,7 +48,7 @@ const TakeAssignmentBtn = ({ assignment }) => {
         className="relative z-50"
       >
         <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-          <DialogPanel className="max-w-2xl w-full shrink-0 space-y-4  bg-white p-12 shadow-md rounded-sm">
+          <DialogPanel className="max-w-2xl w-full shrink-0 space-y-4  bg-base-100 md:p-12 p-5 shadow-md rounded-sm">
             <div className="flex gap-4 justify-end">
               <button onClick={() => setIsOpen(false)}>Cancel</button>
             </div>

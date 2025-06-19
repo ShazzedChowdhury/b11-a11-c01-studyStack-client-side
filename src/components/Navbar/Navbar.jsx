@@ -6,14 +6,27 @@ import useAuth from '../../Hooks/useAuth';
 import LoggedIn from '../LoggedIn';
 import NotLoggedIn from '../NotLoggedIn';
 import ThemeControler from '../ThemeControler';
+import sweetMessage from '../../Utils/sweetMessage';
 const Navbar = () => {
-    const { user } = useAuth();
+    const { user, logOutUser, setUser } = useAuth();
+
+
+    const handleUserLogOut = () => {
+      logOutUser()
+        .then(() => {
+          sweetMessage("logged out successfully", "success");
+          setUser(null);
+        })
+        .catch((error) => {
+          sweetMessage("Somethings went wrong. try again.");
+        });
+    };
+
+
     const links = (
       <>
         <li>
-          <NavLink to="/" >
-            Home
-          </NavLink>
+          <NavLink to="/">Home</NavLink>
         </li>
         <li>
           <NavLink to="/assignments">Assignments</NavLink>
@@ -23,15 +36,24 @@ const Navbar = () => {
             <NavLink to="/pending-assignments">Pending Assignments</NavLink>
           </li>
         )}
+        {!user && (
+          <>
+            <li>
+              <NavLink to="/sign-in" className="block md:hidden">
+                Sign In
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/register" className="block md:hidden">
+                Register
+              </NavLink>
+            </li>
+          </>
+        )}
         <li>
-          <NavLink to="/sign-in block" className="block md:hidden">
-            Sign In
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/register" className="block md:hidden">
-            Register
-          </NavLink>
+          <button onClick={handleUserLogOut} className='block md:hidden'>
+            Logout
+          </button>
         </li>
       </>
     );
@@ -77,7 +99,11 @@ const Navbar = () => {
           <div>
             <ThemeControler />
           </div>
-          {user ? <LoggedIn /> : <NotLoggedIn />}
+          {user ? (
+            <LoggedIn handleUserLogOut={handleUserLogOut} />
+          ) : (
+            <NotLoggedIn />
+          )}
         </div>
       </div>
     );

@@ -2,8 +2,8 @@ import React from "react";
 
 const UserReviewSection = () => {
   return (
-    <section className="bg-[#f5f7f9]">
-      <div className="flex flex-col md:flex-row justify-between w-full items-center gap-5 max-w-7xl mx-auto px-5 md:px-10 py-20">
+    <section className="bg-[#f5f7f9] dark:bg-[#1d232a]">
+      <div className="flex flex-col-reverse md:flex-row justify-between w-full items-center gap-5 max-w-7xl mx-auto px-5 md:px-10 py-20">
         <div className="grid grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-5 *:rounded-lg">
           <div className="bg-base-100 shadow-lg md:col-span-2 flex flex-col items-center gap-5 p-5  text-center">
             <div className="w-20 rounded-full flex justify-center items-center overflow-hidden">

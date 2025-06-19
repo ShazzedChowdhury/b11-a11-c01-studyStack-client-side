@@ -18,7 +18,7 @@ const DetailsPage = () => {
       <section className="max-w-7xl mx-auto px-5 md:px-10 py-10">
         <div className="hero bg-base-200 rounded-lg">
           <div className="hero-content flex-col lg:flex-row">
-            <img src={assignment?.thumbnail} className="max-w-sm rounded-lg" />
+            <img src={assignment?.thumbnail} className="max-w-sm w-full rounded-lg" />
             <div>
               <h1 className="text-3xl font-bold">{assignment?.title}</h1>
               <p className="pt-6">
