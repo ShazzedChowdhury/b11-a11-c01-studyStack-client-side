@@ -10,18 +10,34 @@ import "react-datepicker/dist/react-datepicker.css";
 import sweetMessage from '../../Utils/sweetMessage';
 
 const UpdateBtn = ({assignment}) => {
-     const [selectedDate, setSelectedDate] = useState(assignment?.dueDate);
-     const parseDate = (dateStr) => {
-       const [day, month, year] = dateStr.split("-");
-       const formatedDate =  new Date(`${day}-${month}-${year}`); 
-       setSelectedDate(formatedDate)
-     };
-     console.log(selectedDate)
-     useEffect(() => {
-        parseDate(selectedDate)
-     }, [])
+     const [selectedDate, setSelectedDate] = useState();
      const [isOpen, setIsOpen] = useState(false);
-    console.log(selectedDate)
+      const parseDate = (dateInput) => {
+        console.log(dateInput, typeof dateInput)
+        if(!dateInput) {
+          return null
+        }
+
+        if(typeof dateInput === "string") {
+          const [day, month, year] = dateInput.split("-");
+          return new Date(`${year}-${month}-${day}`)
+        }
+
+        if(dateInput instanceof Date) {
+          return dateInput
+        }
+
+        return null
+      
+      }
+     
+     useEffect(() => {
+       if(assignment?.dueDate){
+       const date = parseDate(assignment?.dueDate);
+        setSelectedDate(date)
+       }
+     }, [assignment])
+    
 
     const handleUpdate = (e) => {
         e.preventDefault()
@@ -33,6 +49,7 @@ const UpdateBtn = ({assignment}) => {
         .then(res => {
           if(res.data.modifiedCount) {
             sweetMessage("Updated successfully.");
+            setIsOpen(false)
           }
         })
         .catch(error => console.log(error))
@@ -81,9 +98,7 @@ const UpdateBtn = ({assignment}) => {
                     <option value="hard">Hard</option>
                   </select>
                 </div>
-                {
-                  assignment?.dueDate
-                }
+              
                 <div className="flex flex-col">
                   <label className="label">Date</label>
                   <DatePicker
