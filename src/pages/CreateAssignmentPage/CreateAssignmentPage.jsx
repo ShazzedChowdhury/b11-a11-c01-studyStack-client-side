@@ -12,7 +12,7 @@ const CreateAssignmentPage = () => {
     const [ errorMessage, setErrorMessage ] = useState("")
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure()
-    const { setStatus } = use(AssignmentContext)
+    const { setStatus, status } = use(AssignmentContext)
 
     const handleCreateAssignment = (e) => {
         e.preventDefault();
@@ -30,7 +30,7 @@ const CreateAssignmentPage = () => {
           .then((res) => {
             if(res.data.insertedId) {
                 sweetMessage("Assignment created successfully.");
-                setStatus(true)
+                setStatus(!status)
             }
           })
           .catch((error) => {
