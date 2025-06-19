@@ -10,7 +10,7 @@ const SignInPage = () => {
     const { logInUser, setUser } = useAuth();
     const navigate = useNavigate()
     const location = useLocation()
-    console.log(location)
+    
     const handleSignIn = (e) => {
         e.preventDefault();
         const form = e.target;

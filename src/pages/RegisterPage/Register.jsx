@@ -25,31 +25,37 @@ const Register = () => {
         else if(!/[A-Z]/.test(password)) {
             return sweetMessage("Password must contain one uppercase.", "error")
         }
-        
-        //sign in with firebase
-        createUser(email, password)
-          .then((result) => {
-            const currentUser = result.user;
-            if(currentUser) {
-                updateUserInfo({ displayName: remainProp.name, photoURL: remainProp.photoUrl})                
-                .then(() => {
-                    sweetMessage("Your account created successfully")
-                    setUser(currentUser)
-                    navigate("/")
-                }).catch(error => {
-                    sweetMessage("somethings went wrong. try again.", "error")
+        else if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
+            return sweetMessage("Password must contain atleast one special characters.", "error")
+        }
+          //sign in with firebase
+          createUser(email, password)
+            .then((result) => {
+              const currentUser = result.user;
+              if (currentUser) {
+                updateUserInfo({
+                  displayName: remainProp.name,
+                  photoURL: remainProp.photoUrl,
                 })
-            }
-          })
-          .catch((error) => {
-            if (
-              error.message === "Firebase: Error (auth/email-already-in-use)."
-            ) {
-              sweetMessage("Account already exits", "error");
-            } else {
-              sweetMessage("somethings went wrong. try again.", "error");
-            }
-          })}
+                  .then(() => {
+                    sweetMessage("Your account created successfully");
+                    setUser(currentUser);
+                    navigate("/");
+                  })
+                  .catch((error) => {
+                    sweetMessage("somethings went wrong. try again.", "error");
+                  });
+              }
+            })
+            .catch((error) => {
+              if (
+                error.message === "Firebase: Error (auth/email-already-in-use)."
+              ) {
+                sweetMessage("Account already exits", "error");
+              } else {
+                sweetMessage("somethings went wrong. try again.", "error");
+              }
+            });}
 
   return (
     <section className="min-h-screen flex justify-center items-center px-5 md:px-0 py-10">

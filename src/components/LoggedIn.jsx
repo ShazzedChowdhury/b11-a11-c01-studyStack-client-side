@@ -4,7 +4,6 @@ import useAuth from '../Hooks/useAuth';
 import sweetMessage from '../Utils/sweetMessage';
 
 const LoggedIn = ({ handleUserLogOut }) => {
-  const { logOutUser, setUser } = useAuth();
   const [isOpen, setOpen] = useState(false);
   console.log(isOpen);
 

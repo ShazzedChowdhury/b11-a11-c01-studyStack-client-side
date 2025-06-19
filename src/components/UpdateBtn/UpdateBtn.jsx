@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
 import DatePicker from 'react-datepicker';
 import {
@@ -8,10 +8,12 @@ import {
 } from "@headlessui/react";
 import "react-datepicker/dist/react-datepicker.css";
 import sweetMessage from '../../Utils/sweetMessage';
+import { AssignmentContext } from '../../context/AssignmentProvider';
 
 const UpdateBtn = ({assignment}) => {
      const [selectedDate, setSelectedDate] = useState();
      const [isOpen, setIsOpen] = useState(false);
+     const {status, setStatus} = use(AssignmentContext)
       const parseDate = (dateInput) => {
         console.log(dateInput, typeof dateInput)
         if(!dateInput) {
@@ -49,6 +51,7 @@ const UpdateBtn = ({assignment}) => {
         .then(res => {
           if(res.data.modifiedCount) {
             sweetMessage("Updated successfully.");
+            setStatus(!status)
             setIsOpen(false)
           }
         })

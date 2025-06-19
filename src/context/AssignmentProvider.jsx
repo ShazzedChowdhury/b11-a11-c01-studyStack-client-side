@@ -30,6 +30,7 @@ const AssignmentProvider = ({ children }) => {
         setSearch,
         search,
         level,
+        status,
       }}
     >
       {children}

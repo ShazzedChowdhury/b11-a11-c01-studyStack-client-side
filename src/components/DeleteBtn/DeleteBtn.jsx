@@ -7,7 +7,7 @@ import { AssignmentContext } from '../../context/AssignmentProvider';
 
 const DeleteBtn = ({ assignment }) => {
     const { user } = useAuth();
-    const { setStatus } = use(AssignmentContext)
+    const { setStatus, status } = use(AssignmentContext)
     const handleDelete = () => {
         Swal.fire({
           title: "Are you sure?",
@@ -27,7 +27,7 @@ const DeleteBtn = ({ assignment }) => {
             axios.delete(`${import.meta.env.VITE_base_api}/assignment/${assignment._id}`)
             .then(res => {
                if (res.data?.deletedCount) {
-                setStatus(true)
+                setStatus(!status)
                 Swal.fire({
                   title: "Deleted!",
                   text: "Your assignment has been deleted.",

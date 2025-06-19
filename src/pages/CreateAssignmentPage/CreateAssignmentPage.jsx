@@ -9,6 +9,7 @@ import { AssignmentContext } from '../../context/AssignmentProvider';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 const CreateAssignmentPage = () => {
     const [selectedDate, setSelectedDate] = useState(null);
+    const [ errorMessage, setErrorMessage ] = useState("")
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure()
     const { setStatus } = use(AssignmentContext)
@@ -19,8 +20,10 @@ const CreateAssignmentPage = () => {
         const formData = new FormData(form);
         const assignmentData = Object.fromEntries(formData.entries())
         assignmentData.creator = user.email;
-        console.log(assignmentData);
-
+      
+       if(assignmentData?.description.length < 20) {
+          return setErrorMessage("Description must be 20 characters long.")
+        }
         axiosSecure.post(`/create-assignment`, {
             ...assignmentData
           })
@@ -33,6 +36,8 @@ const CreateAssignmentPage = () => {
           .catch((error) => {
             console.log(error);
           });
+
+          setErrorMessage("")
         
     }
     return (
@@ -105,6 +110,7 @@ const CreateAssignmentPage = () => {
                 className="textarea"
                 placeholder="Bio"
               ></textarea>
+              <p className='text-red-500 text-sm font-semibold'>{errorMessage}</p>
             </div>
             <button type="submit" className="btn btn-primary w-full mt-5">
               Create Assignment

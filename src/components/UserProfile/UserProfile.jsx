@@ -4,7 +4,7 @@ import useAuth from '../../Hooks/useAuth';
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 
-const UserProfile = ({ onClick, isOpen, handleUserLogOut }) => {
+const UserProfile = ({ onClick, isOpen }) => {
     const { user } = useAuth();
   return (
     <>
@@ -29,12 +29,7 @@ const UserProfile = ({ onClick, isOpen, handleUserLogOut }) => {
             <NavLink to="/my-assignments" className="p-1 rounded-sm text-sm block">
               My Attempted Assignments
             </NavLink>
-          </li>
-          <li>
-            <button onClick={handleUserLogOut} className="font-semibold p-1 rounded-sm text-sm">
-              Logout
-            </button>
-          </li>
+          </li>          
         </ul>
       )}
     </>
