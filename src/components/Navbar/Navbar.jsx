@@ -50,11 +50,13 @@ const Navbar = () => {
             </li>
           </>
         )}
-        <li>
-          <button onClick={handleUserLogOut} className='block md:hidden'>
-            Logout
-          </button>
-        </li>
+        {user && (
+          <li>
+            <button onClick={handleUserLogOut} className="block md:hidden">
+              Logout
+            </button>
+          </li>
+        )}
       </>
     );
     return (

@@ -8,7 +8,7 @@ const PendingAssignmentTable = ({
   loading,
 }) => {
  
-  console.log(pendingData);
+  
   return (
     <table className="table">
       {/* head */}

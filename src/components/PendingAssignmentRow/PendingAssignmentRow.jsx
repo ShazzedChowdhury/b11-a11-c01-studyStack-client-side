@@ -11,7 +11,7 @@ import {motion} from "motion/react";
 const PendingAssignmentRow = ({ assignment, reFetch, setReFetch, index }) => {
   const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
-  console.log(assignment);
+  
   const handleGivingMarks = (e) => {
     e.preventDefault();
     if (assignment.user === user.email) {

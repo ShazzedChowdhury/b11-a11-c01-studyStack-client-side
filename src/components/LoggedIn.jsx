@@ -5,7 +5,7 @@ import sweetMessage from '../Utils/sweetMessage';
 
 const LoggedIn = ({ handleUserLogOut }) => {
   const [isOpen, setOpen] = useState(false);
-  console.log(isOpen);
+  
 
   return (
     <>

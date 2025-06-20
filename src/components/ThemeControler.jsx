@@ -5,9 +5,9 @@ import { ThemeContext } from '../context/ThemeProvider';
 
 const ThemeControler = () => {
     const { theme, setTheme } = use(ThemeContext)
-    console.log(theme)
+    
     const handleToggle = e => {
-        console.log(e.target.checked);
+        
         if(e.target.checked) {
             setTheme("dark")
         } else {
