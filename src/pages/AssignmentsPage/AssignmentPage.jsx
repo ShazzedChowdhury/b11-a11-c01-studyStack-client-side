@@ -11,7 +11,7 @@ const AssignmentPage = () => {
     if(loading) {
         return <Loading />
     }
-
+   
     return (
       <section
        className="max-w-7xl mx-auto px-5 md:px-10 py-10">

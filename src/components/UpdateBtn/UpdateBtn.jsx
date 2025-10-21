@@ -15,7 +15,7 @@ const UpdateBtn = ({assignment}) => {
      const [isOpen, setIsOpen] = useState(false);
      const {status, setStatus} = use(AssignmentContext)
       const parseDate = (dateInput) => {
-        console.log(dateInput, typeof dateInput)
+     
         if(!dateInput) {
           return null
         }
