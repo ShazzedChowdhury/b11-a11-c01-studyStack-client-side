@@ -1,16 +1,17 @@
 import React from 'react';
 import DeleteBtn from '../DeleteBtn/DeleteBtn';
 import UpdateBtn from '../UpdateBtn/UpdateBtn';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import {motion} from "motion/react";
 
-const AssignmentCard = ({ assignment, index }) => {
+const AssignmentCard = ({ assignment, action = true, index }) => {
     const navigate = useNavigate()
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 2 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.2 }}
       className="card bg-base-100 shadow-sm"
     >
       <figure className="w-full h-48">
@@ -31,16 +32,25 @@ const AssignmentCard = ({ assignment, index }) => {
             {assignment?.difficulty}
           </p>
         </div>
-        <div className="card-actions justify-center mt-5">
-          <DeleteBtn assignment={assignment} />
-          <UpdateBtn assignment={assignment} />
-          <button
-            onClick={() => navigate(`/assignment/${assignment?._id}`)}
-            className="btn btn-xs"
+        {action ? (
+          <div className="card-actions justify-center mt-5">
+            <DeleteBtn assignment={assignment} />
+            <UpdateBtn assignment={assignment} />
+            <button
+              onClick={() => navigate(`/assignment/${assignment?._id}`)}
+              className="btn btn-xs"
+            >
+              View
+            </button>
+          </div>
+        ) : (
+          <Link
+            className="link text-sm text-primary"
+            to={`/assignment/${assignment?._id}`}
           >
-            View
-          </button>
-        </div>
+            View Details
+          </Link>
+        )}
       </div>
     </motion.div>
   );
