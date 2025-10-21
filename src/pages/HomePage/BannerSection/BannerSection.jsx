@@ -6,9 +6,9 @@ import BannerAnimation from '../../../components/BannerAnimation/BannerAnimation
 const BannerSection = () => {
     return (
       <section className=" bg-gradient-to-br from-[#ffffff] to-[#f0f4ff] dark:from-[#1d232a] dark:to-[##1a1f26]">
-        <div className="flex flex-col-reverse md:flex-row py-10 gap-10 items-center justify-between max-w-7xl mx-auto px-5 md:px-10 h-auto md:h-[calc(100vh-89px)]">
+        <div className="flex flex-col-reverse md:flex-row py-10 gap-10 items-center justify-between max-w-7xl mx-auto px-5 md:px-10 h-auto md:h-[600px]">
           <div className="space-y-5">
-            <h1 className="text-3xl md:text-5xl font-bold">
+            <h1 className="text-3xl md:text-5xl font-bold capitalize">
               Limitless learning at <br /> your fingertips
             </h1>
             <p className="text-lg font-semibold text-gray-400">

@@ -1,25 +1,49 @@
 {
   "section": {
-    "title": "Powerful Features for Smarter Group Work",
-    "subtitle": "Collaborate effortlessly with your team. Create, manage, and evaluate assignments—anytime, anywhere.",
+    "title": "Smart Tools for Effortless Collaboration",
+    "subtitle": "Create, submit, review, and track assignments seamlessly with your team.",
     "features": [
       {
-        "icon": "📝",
+        "icon": "FiEdit",
+        "iconLibrary": "react-icons/fi",
         "title": "Create Assignments",
-        "description": "Set up group tasks, add resources, and assign deadlines with ease.",
-        "color": "text-indigo-600"
+        "description": "Easily create and organize coding or theory-based assignments. Add detailed instructions, attach resources, and set custom deadlines for individuals or groups.",
+        "color": "#4F46E5"
       },
       {
-        "icon": "✅",
+        "icon": "BsUpload",
+        "iconLibrary": "react-icons/bs",
         "title": "Submit Work",
-        "description": "Students can submit files, write responses, and track their submissions in real-time.",
-        "color": "text-green-500"
+        "description": "Students can upload code files, documents, or written answers. The system supports multiple file formats and provides submission tracking with instant upload status.",
+        "color": "#22C55E"
       },
       {
-        "icon": "📊",
+        "icon": "FaRegComments",
+        "iconLibrary": "react-icons/fa",
         "title": "Peer & Instructor Review",
-        "description": "Allow team members or instructors to review, comment, and grade assignments collaboratively.",
-        "color": "text-yellow-500"
+        "description": "Enable detailed feedback through comments and peer reviews. Instructors and group members can evaluate assignments collaboratively, fostering teamwork and learning.",
+        "color": "#EAB308"
+      },
+      {
+        "icon": "MdOutlineLeaderboard",
+        "iconLibrary": "react-icons/md",
+        "title": "Grading & Performance Tracking",
+        "description": "Assign marks, view performance analytics, and track progress over time. Students can monitor grades and see instructor feedback in one place.",
+        "color": "#A855F7"
+      },
+      {
+        "icon": "RiTeamLine",
+        "iconLibrary": "react-icons/ri",
+        "title": "Collaborative Group Spaces",
+        "description": "Each assignment comes with a shared discussion area where team members can brainstorm, ask questions, and share ideas in real time.",
+        "color": "#EC4899"
+      },
+      {
+        "icon": "FiClock",
+        "iconLibrary": "react-icons/fi",
+        "title": "Deadline Reminders & Notifications",
+        "description": "Automatic reminders help keep students on track. Get notified about upcoming deadlines, new reviews, and updates instantly.",
+        "color": "#3B82F6"
       }
     ]
   }
