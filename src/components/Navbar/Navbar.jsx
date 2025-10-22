@@ -7,6 +7,7 @@ import LoggedIn from '../LoggedIn';
 import NotLoggedIn from '../NotLoggedIn';
 import ThemeControler from '../ThemeControler';
 import sweetMessage from '../../Utils/sweetMessage';
+import Notifications from '../Notifications';
 const Navbar = () => {
     const { user, logOutUser, setUser } = useAuth();
 
@@ -98,8 +99,9 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end gap-5">
-          <div>
+          <div className='flex gap-2'>
             <ThemeControler />
+            <Notifications />
           </div>
           {user ? (
             <LoggedIn handleUserLogOut={handleUserLogOut} />

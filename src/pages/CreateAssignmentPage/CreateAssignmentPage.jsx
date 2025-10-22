@@ -7,12 +7,14 @@ import axios from 'axios';
 import sweetMessage from '../../Utils/sweetMessage';
 import { AssignmentContext } from '../../context/AssignmentProvider';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import useNotification from '../../Hooks/useNotification';
 const CreateAssignmentPage = () => {
     const [selectedDate, setSelectedDate] = useState(null);
     const [ errorMessage, setErrorMessage ] = useState("")
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure()
-    const { setStatus, status } = use(AssignmentContext)
+    const { setStatus, status } = use(AssignmentContext);
+    const { setRefetch } = useNotification();
 
     const handleCreateAssignment = (e) => {
         e.preventDefault();
@@ -31,6 +33,7 @@ const CreateAssignmentPage = () => {
             if(res.data.insertedId) {
                 sweetMessage("Assignment created successfully.");
                 setStatus(!status)
+                setRefetch(prev => !prev)
             }
           })
           .catch((error) => {

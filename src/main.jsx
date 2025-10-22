@@ -7,6 +7,7 @@ import AuthProvider from "./context/AuthProvider.jsx";
 import AssignmentProvider from "./context/AssignmentProvider.jsx";
 import ThemeProvider from "./context/ThemeProvider.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import NotificationProvider from "./context/NotificationProvider.jsx";
 
 const queryClient = new QueryClient();
 createRoot(document.getElementById("root")).render(
@@ -14,9 +15,11 @@ createRoot(document.getElementById("root")).render(
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <AuthProvider>
-          <AssignmentProvider>
-            <RouterProvider router={router} />
-          </AssignmentProvider>
+          <NotificationProvider>
+            <AssignmentProvider>
+              <RouterProvider router={router} />
+            </AssignmentProvider>
+          </NotificationProvider>
         </AuthProvider>
       </ThemeProvider>
     </QueryClientProvider>

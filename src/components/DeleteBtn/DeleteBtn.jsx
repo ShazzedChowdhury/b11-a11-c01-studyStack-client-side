@@ -4,10 +4,12 @@ import useAuth from '../../Hooks/useAuth';
 import sweetMessage from '../../Utils/sweetMessage';
 import axios from 'axios';
 import { AssignmentContext } from '../../context/AssignmentProvider';
+import useNotification from '../../Hooks/useNotification';
 
 const DeleteBtn = ({ assignment }) => {
     const { user } = useAuth();
-    const { setStatus, status } = use(AssignmentContext)
+    const { setStatus, status } = use(AssignmentContext);
+    const { setRefetch } = useNotification();
     const handleDelete = () => {
         Swal.fire({
           title: "Are you sure?",
@@ -33,6 +35,7 @@ const DeleteBtn = ({ assignment }) => {
                   text: "Your assignment has been deleted.",
                   icon: "success",
                 });
+                setRefetch(prev => !prev)
                }
             }).catch(error => {
                 console.log(error)
